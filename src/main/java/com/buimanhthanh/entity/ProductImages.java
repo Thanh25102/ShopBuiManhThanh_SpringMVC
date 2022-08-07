@@ -10,8 +10,9 @@ public class ProductImages {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "product_id")
-    private Integer productId;
+    @ManyToOne()
+    @JoinColumn(name = "product_id")
+    private Products products;
 
     @Column(name = "url")
     private String url;
@@ -24,12 +25,12 @@ public class ProductImages {
         this.id = id;
     }
 
-    public Integer getProductId() {
-        return this.productId;
+    public Products getProducts() {
+        return products;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setProducts(Products products) {
+        this.products = products;
     }
 
     public String getUrl() {

@@ -1,6 +1,8 @@
 package com.buimanhthanh.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -9,9 +11,6 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
-    @Column(name = "customer_id")
-    private Integer customerId;
 
     @Column(name = "order_status")
     private String orderStatus;
@@ -25,20 +24,20 @@ public class Orders {
     @Column(name = "create_time")
     private java.sql.Timestamp createTime;
 
+    @OneToMany(mappedBy = "orders")
+    private Set<OrderDetails> orderDetailsSet;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customers customers;
+
+
     public Integer getId() {
         return this.id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getCustomerId() {
-        return this.customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
     }
 
     public String getOrderStatus() {
@@ -71,5 +70,27 @@ public class Orders {
 
     public void setCreateTime(java.sql.Timestamp createTime) {
         this.createTime = createTime;
+    }
+    public Customers getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
+    }
+
+    public Set<OrderDetails> getOrderDetailsSet() {
+        return orderDetailsSet;
+    }
+
+    public void setOrderDetailsSet(Set<OrderDetails> orderDetailsSet) {
+        this.orderDetailsSet = orderDetailsSet;
+    }
+    public void addOrderDetails(OrderDetails orderDetails){
+        if(orderDetailsSet == null){
+            orderDetailsSet = new HashSet<>();
+        }
+        orderDetailsSet.add(orderDetails);
+        orderDetails.setOrders(this);
     }
 }

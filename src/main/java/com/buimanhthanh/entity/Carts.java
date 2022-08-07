@@ -1,6 +1,8 @@
 package com.buimanhthanh.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "carts")
@@ -19,6 +21,9 @@ public class Carts {
 
     @Column(name = "create_time")
     private java.sql.Timestamp createTime;
+
+    @OneToMany(mappedBy = "carts")
+    private Set<CartDetails> setCartDetails;
 
     public Integer getId() {
         return this.id;
@@ -53,4 +58,21 @@ public class Carts {
     public void setCreateTime(java.sql.Timestamp createTime) {
         this.createTime = createTime;
     }
+
+    public Set<CartDetails> getSetCartDetails() {
+        return setCartDetails;
+    }
+
+    public void setSetCartDetails(Set<CartDetails> setCartDetails) {
+        this.setCartDetails = setCartDetails;
+    }
+
+    public void addCartDetails(CartDetails cartDetails){
+        if(setCartDetails == null){
+            setCartDetails = new HashSet<>();
+        }
+        setCartDetails.add(cartDetails);
+        cartDetails.setCarts(this);
+    }
+
 }

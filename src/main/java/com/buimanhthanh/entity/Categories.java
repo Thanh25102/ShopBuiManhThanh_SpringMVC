@@ -1,6 +1,7 @@
 package com.buimanhthanh.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "categories")
@@ -18,6 +19,9 @@ public class Categories {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "categories")
+    private Set<Products> productsSet;
 
     public Integer getId() {
         return this.id;
@@ -49,5 +53,13 @@ public class Categories {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Products> getProductsSet() {
+        return productsSet;
+    }
+
+    public void setProductsSet(Set<Products> productsSet) {
+        this.productsSet = productsSet;
     }
 }

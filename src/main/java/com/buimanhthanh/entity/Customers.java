@@ -37,6 +37,17 @@ public class Customers {
     @OneToMany(mappedBy = "customers")
     private Set<Carts> cartsSet;
 
+    @OneToMany(mappedBy = "customers")
+    private Set<Orders> ordersSet;
+
+    public Set<Orders> getOrdersSet() {
+        return ordersSet;
+    }
+
+    public void setOrdersSet(Set<Orders> ordersSet) {
+        this.ordersSet = ordersSet;
+    }
+
     public Set<Carts> getCartsSet() {
         return cartsSet;
     }
@@ -115,5 +126,12 @@ public class Customers {
         }
         cartsSet.add(tempCarts);
         tempCarts.setCustomers(this);
+    }
+    public void addOrders(Orders tempOrders){
+        if(ordersSet == null){
+            ordersSet = new HashSet<>();
+        }
+        ordersSet.add(tempOrders);
+        tempOrders.setCustomers(this);
     }
 }

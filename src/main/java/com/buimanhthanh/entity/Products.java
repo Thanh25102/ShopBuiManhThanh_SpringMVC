@@ -1,6 +1,8 @@
 package com.buimanhthanh.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -22,8 +24,22 @@ public class Products {
     @Column(name = "thumbnail")
     private String thumbnail;
 
-    @Column(name = "category_id")
-    private Integer categoryId;
+    @Column(name="raw_quantity")
+    private Integer rawQuantity;
+
+    @ManyToOne()
+    @JoinColumn(name = "category_id")
+    private Categories categories;
+
+    @OneToMany(mappedBy = "products")
+    private Set<CartDetails> cartDetailsSet;
+
+    @OneToMany(mappedBy = "products")
+    private Set<OrderDetails> orderDetailsSet;
+
+    @OneToMany(mappedBy = "products")
+    private Set<ProductImages> productImagesSet;
+
 
     public Integer getId() {
         return this.id;
@@ -65,11 +81,66 @@ public class Products {
         this.thumbnail = thumbnail;
     }
 
-    public Integer getCategoryId() {
-        return this.categoryId;
+    public Categories getCategories() {
+        return categories;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategories(Categories categories) {
+        this.categories = categories;
+    }
+
+    public Integer getRawQuantity() {
+        return rawQuantity;
+    }
+
+    public void setRawQuantity(Integer rawQuantity) {
+        this.rawQuantity = rawQuantity;
+    }
+
+    public Set<CartDetails> getCartDetailsSet() {
+        return cartDetailsSet;
+    }
+
+    public void setCartDetailsSet(Set<CartDetails> cartDetailsSet) {
+        this.cartDetailsSet = cartDetailsSet;
+    }
+
+    public Set<OrderDetails> getOrderDetailsSet() {
+        return orderDetailsSet;
+    }
+
+    public void setOrderDetailsSet(Set<OrderDetails> orderDetailsSet) {
+        this.orderDetailsSet = orderDetailsSet;
+    }
+
+    public Set<ProductImages> getProductImagesSet() {
+        return productImagesSet;
+    }
+
+    public void setProductImagesSet(Set<ProductImages> productImagesSet) {
+        this.productImagesSet = productImagesSet;
+    }
+
+    public void addProductImages(ProductImages productImages){
+        if(productImagesSet == null){
+            productImagesSet = new HashSet<>();
+        }
+        productImagesSet.add(productImages);
+        productImages.setProducts(this);
+    }
+
+    public void addCartDetails(CartDetails cartDetails){
+        if(cartDetailsSet == null){
+            cartDetailsSet = new HashSet<>();
+        }
+        cartDetailsSet.add(cartDetails);
+        cartDetails.setProducts(this);
+    }
+    public void addOrderDetails(OrderDetails orderDetails){
+        if(orderDetailsSet == null){
+            orderDetailsSet = new HashSet<>();
+        }
+        orderDetailsSet.add(orderDetails);
+        orderDetails.setProducts(this);
     }
 }
