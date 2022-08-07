@@ -6,11 +6,16 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 @Configuration
 public class ServletInitialize extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+	
+	// class config khong implement webconfiger thi bo vao day
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		return new Class[] {
+				HibernateConfig.class
+		};
 	}
 
+	// class config co implement webconfiger thi bo vao day
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] {

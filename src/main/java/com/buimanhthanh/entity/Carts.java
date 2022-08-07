@@ -6,11 +6,13 @@ import javax.persistence.*;
 @Table(name = "carts")
 public class Carts {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "customer_id")
-    private Integer customerId;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customers customers;
 
     @Column(name = "ammount")
     private Double ammount;
@@ -26,13 +28,15 @@ public class Carts {
         this.id = id;
     }
 
-    public Integer getCustomerId() {
-        return this.customerId;
+
+    public Customers getCustomers() {
+        return customers;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
     }
+
 
     public Double getAmmount() {
         return this.ammount;

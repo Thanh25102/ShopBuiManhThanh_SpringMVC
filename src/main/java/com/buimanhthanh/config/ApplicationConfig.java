@@ -19,5 +19,5 @@ public class ApplicationConfig implements WebMvcConfigurer {
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
-
-}
+                                      
+}                                     

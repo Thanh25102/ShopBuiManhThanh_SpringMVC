@@ -13,6 +13,18 @@ public class Authorities {
     @Column(name = "authority")
     private String authority;
 
+    @ManyToOne
+    @JoinColumn(name = "user_name")
+    private Users users;
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
     public String getUserName() {
         return this.userName;
     }

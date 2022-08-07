@@ -1,11 +1,14 @@
 package com.buimanhthanh.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
 public class Customers {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -27,8 +30,20 @@ public class Customers {
     @Column(name = "rank")
     private String rank;
 
-    @Column(name = "user_name")
-    private String userName;
+    @OneToOne
+    @JoinColumn(name = "user_name")
+    private Users users;
+
+    @OneToMany(mappedBy = "customers")
+    private Set<Carts> cartsSet;
+
+    public Set<Carts> getCartsSet() {
+        return cartsSet;
+    }
+
+    public void setCartsSet(Set<Carts> cartsSet) {
+        this.cartsSet = cartsSet;
+    }
 
     public Integer getId() {
         return this.id;
@@ -86,11 +101,19 @@ public class Customers {
         this.rank = rank;
     }
 
-    public String getUserName() {
-        return this.userName;
+
+    public Users getUsers() {
+        return users;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+    public void addCarts(Carts tempCarts){
+        if(cartsSet == null){
+            cartsSet = new HashSet<>();
+        }
+        cartsSet.add(tempCarts);
+        tempCarts.setCustomers(this);
     }
 }

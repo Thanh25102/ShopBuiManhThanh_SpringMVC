@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class CartDetails {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "product_id")

@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "staff")
 public class Staff {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -21,8 +22,17 @@ public class Staff {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "user_name")
-    private String userName;
+    @OneToOne
+    @JoinColumn(name = "user_name")
+    private Users users;
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
 
     public Integer getId() {
         return this.id;
@@ -64,11 +74,4 @@ public class Staff {
         this.address = address;
     }
 
-    public String getUserName() {
-        return this.userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 }
