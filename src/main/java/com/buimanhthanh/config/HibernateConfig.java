@@ -37,7 +37,7 @@ public class HibernateConfig {
 		dataSource.setUrl(env.getProperty("hibernate.connection.url"));
 		dataSource.setUsername(env.getProperty("hibernate.connection.userName"));
 		dataSource.setPassword(env.getProperty("hibernate.connection.password"));
-		return null;
+		return dataSource;
 	}
 	
 	private Properties hibernateProperties() {

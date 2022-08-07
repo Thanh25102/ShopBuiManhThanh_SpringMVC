@@ -1,17 +1,16 @@
 package com.buimanhthanh.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "order_details")
-public class OrderDetails {
+public class OrderDetails implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
-    @Column(name = "product_id")
-    private Integer productId;
 
     @Column(name = "price")
     private Double price;
@@ -34,13 +33,7 @@ public class OrderDetails {
         this.id = id;
     }
 
-    public Integer getProductId() {
-        return this.productId;
-    }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
 
     public Orders getOrders() {
         return orders;

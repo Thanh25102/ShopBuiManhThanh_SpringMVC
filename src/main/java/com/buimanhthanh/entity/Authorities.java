@@ -1,10 +1,12 @@
 package com.buimanhthanh.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "authorities")
-public class Authorities {
+public class Authorities implements Serializable{
     @Id
     @Column(name = "user_name")
     private String userName;

@@ -7,6 +7,7 @@ public class ProductsDTO {
     private String description;
     private String thumbnail;
     private Integer categoryId;
+    private Integer rawQuantity;
 
     public Integer getId() {
         return this.id;
@@ -54,5 +55,13 @@ public class ProductsDTO {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Integer getRawQuantity() {
+        return this.rawQuantity;
+    }
+
+    public void setRawQuantity(Integer rawQuantity) {
+        this.rawQuantity = rawQuantity;
     }
 }

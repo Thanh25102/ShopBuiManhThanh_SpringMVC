@@ -10,4 +10,12 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
+
+	@GetMapping(value={"/cart"})
+	public String cart(){
+		return "cart";
+	}@GetMapping(value={"/checkout"})
+	public String checkOut(){
+		return "checkout";
+	}
 }

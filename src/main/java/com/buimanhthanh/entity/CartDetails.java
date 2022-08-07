@@ -1,10 +1,12 @@
 package com.buimanhthanh.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "cart_details")
-public class CartDetails {
+public class CartDetails implements Serializable{
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
