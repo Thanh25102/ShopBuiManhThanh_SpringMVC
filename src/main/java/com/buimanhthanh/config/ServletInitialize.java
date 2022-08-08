@@ -1,6 +1,5 @@
 package com.buimanhthanh.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ServletInitialize extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -9,7 +8,6 @@ public class ServletInitialize extends AbstractAnnotationConfigDispatcherServlet
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] {
 				HibernateConfig.class,
-				TileConfig.class
 		};
 	}
 

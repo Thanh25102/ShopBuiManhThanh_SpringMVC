@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
 	
-	@GetMapping(value = {"/","/trang-chu"})
+/*	@GetMapping(value = {"/","/trang-chu"})
 	public String index() {
 		return "admin/index";
-	}
+	}*/
 
 
 	@GetMapping(value={"/table"})
