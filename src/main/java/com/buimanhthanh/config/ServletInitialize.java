@@ -3,15 +3,13 @@ package com.buimanhthanh.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-@Configuration
 public class ServletInitialize extends AbstractAnnotationConfigDispatcherServletInitializer {
-
-	
 	// class config khong implement webconfiger thi bo vao day
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] {
-				HibernateConfig.class
+				HibernateConfig.class,
+				TileConfig.class
 		};
 	}
 
@@ -19,7 +17,7 @@ public class ServletInitialize extends AbstractAnnotationConfigDispatcherServlet
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] {
-				ApplicationConfig.class
+				ApplicationConfig.class,
 		};
 	}
 

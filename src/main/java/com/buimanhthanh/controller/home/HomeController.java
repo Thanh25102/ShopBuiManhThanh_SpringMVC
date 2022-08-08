@@ -8,23 +8,22 @@ public class HomeController {
 	
 	@GetMapping(value = {"/","/trang-chu"})
 	public String index() {
-		return "home/index";
+		return "index";
 	}
-
 	@GetMapping(value={"/cart"})
 	public String cart(){
-		return "home/cart";
+		return "cart";
 	}
 	@GetMapping(value={"/checkout"})
 	public String checkOut(){
-		return "home/checkout";
+		return "checkOut";
 	}
 	@GetMapping(value={"/shop"})
 	public String shop(){
-		return "home/shop";
+		return "shop";
 	}
 	@GetMapping(value={"/product-detail"})
 	public String productDetail(){
-		return "home/single-product";
+		return "detailProduct";
 	}
 }
