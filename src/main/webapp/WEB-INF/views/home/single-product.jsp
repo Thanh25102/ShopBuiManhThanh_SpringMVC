@@ -6,7 +6,9 @@
 	Twitter: https://twitter.com/freshdesignweb
 	URL: https://www.freshdesignweb.com/ustora/
 -->
-
+<head>
+    <title>Product Detail</title>
+</head>
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">

@@ -2,7 +2,9 @@
          pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
+<head>
+    <title>Shop</title>
+</head>
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
