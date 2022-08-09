@@ -1,13 +1,18 @@
 package com.buimanhthanh.controller.home;
 
+import com.buimanhthanh.service.ProductImagesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-	
-	@GetMapping(value = {"/","/trang-chu"})
-	public String index() {
+
+	@Autowired
+	private ProductImagesService productImagesService;
+	@GetMapping(value={"/"})
+	public String index(){
+		productImagesService.getAllProductImages().forEach(c-> System.out.println(c.toString()));
 		return "index";
 	}
 	@GetMapping(value={"/cart"})

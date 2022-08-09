@@ -10,10 +10,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:database.properties")
+@EnableTransactionManagement
 public class HibernateConfig {
 	
 	@Autowired
@@ -47,5 +50,10 @@ public class HibernateConfig {
 		props.setProperty(org.hibernate.cfg.Environment.DIALECT, env.getProperty("hibernate.dialect"));
 		return props;
 	}
-	
+	@Bean
+	public HibernateTransactionManager transactionManager(){
+		HibernateTransactionManager myTransactionManager = new HibernateTransactionManager();
+		myTransactionManager.setSessionFactory(getSessionFactory().getObject());
+		return myTransactionManager;
+	}
 }

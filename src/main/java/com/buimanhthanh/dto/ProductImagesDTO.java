@@ -28,4 +28,13 @@ public class ProductImagesDTO {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "ProductImagesDTO{" +
+                "id=" + id +
+                ", productId=" + productId +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }
